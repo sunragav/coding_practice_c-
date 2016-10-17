@@ -26,7 +26,7 @@ int main(int argc, char **argv)
         cout<<lisRec1(arr,n)<<endl;
         //cout<<lisRec2(arr,n)<<endl;
         cout<<lisDP2(arr,n)<<endl;
-        cout<<lisLogN(arr,n)<<endl;
+        cout<<lisLogN2(arr,n)<<endl;
         cout<<"==================================="<<endl;
 
     }

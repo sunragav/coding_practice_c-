@@ -136,6 +136,41 @@ int lisLogN(int a[],int n)
     }
     return len;
 }
+
+int lisLogN2(int a[],int n)
+{
+    cout<<"nlogn solution"<<endl;
+    int temp[n]= {0};
+    int parent[n]= {0};
+    memset(parent,-1,sizeof(parent));
+    int len  = 1;
+    temp[0]=0;
+    for(int i=1; i<n; i++) {
+        if(a[i]<a[temp[0]]) {
+            temp[0] =i;
+        } else if(a[i]>a[temp[len-1]]) {
+            parent[i]=temp[len-1];
+            temp[len++]=i;
+
+        } else {
+            int index= ceilIndex(temp,-1,len-1,a[i]);
+            temp[index] =i;
+            parent[i]=temp[index-1];
+        }
+    }
+
+    int index=temp[len-1];
+    while(index!=-1) {
+        cout<<a[index]<<" ";
+        index=parent[index];
+    }
+    cout<<endl;
+    for(int i=temp[len-1]; i>=0; i=parent[i])
+        cout<<a[i]<<" ";
+    cout<<endl;
+    return len;
+}
+
 void printArray(int a[],int n)
 {
     for(int i=0; i<n; i++)
