@@ -71,8 +71,8 @@ int lcs(int arr1[], int arr2[], int n)
         }
         cout<<endl;
     }*/
-    /*int i=n,j=n;
-
+    int i=n,j=n;
+    vector<int> v;
     while(i>0 && j>0) {
         if(arr1[i-1]==arr2[j-1]) {
             v.push_back(arr1[i-1]);
@@ -89,7 +89,7 @@ int lcs(int arr1[], int arr2[], int n)
 
     for(int i=v.size()-1; i>=0; i--)
         cout<<v[i]<<" ";
-    cout<<endl;*/
+    cout<<endl;
     return dp[n][n];
 }
 
@@ -104,7 +104,7 @@ int lisDP2(int arr[],int n)
     //printArray(arr2, n);
     return lcs(arr,arr2,n);
 }
-
+/*
 int ceilIndex(int temp[], int s, int e,int p)
 {
     while(e-s>1) {
@@ -136,8 +136,19 @@ int lisLogN(int a[],int n)
     }
     return len;
 }
-
-int lisLogN2(int a[],int n)
+int ceilIndex2(int temp[], int a[],int s, int e,int p)
+{
+    while(e-s>1) {
+        int m= s+(e-s)/2;
+        if(a[temp[m]]>=p) {
+            e=m;
+        }  else {
+            s=m;
+        }
+    }
+    return e;
+}
+int lisLogN3(int a[],int n)
 {
     cout<<"nlogn solution"<<endl;
     int temp[n]= {0};
@@ -153,7 +164,7 @@ int lisLogN2(int a[],int n)
             temp[len++]=i;
 
         } else {
-            int index= ceilIndex(temp,-1,len-1,a[i]);
+            int index= ceilIndex2(temp,a,-1,len-1,a[i]);
             temp[index] =i;
             parent[i]=temp[index-1];
         }
@@ -169,8 +180,48 @@ int lisLogN2(int a[],int n)
         cout<<a[i]<<" ";
     cout<<endl;
     return len;
+}*/
+int ceilIndex(int temp[],int ar[],int lo,int hi, int key)
+{
+    while(hi-lo>1) {
+        int m= lo+(hi-lo)/2;
+        if(ar[temp[m]]>=key) {
+            hi=m;
+        } else lo=m;
+    }
+    return hi;
 }
+int lisLogN2(int arr[],int n)
+{
+    int temp[n]= {0};
+    int parent[n];
+    for(int i=0; i<n; i++)parent[i]=-1;
+    //memset(parent,-1,sizeof(parent));
+    int len = 1;
 
+    for(int i=0; i<n; i++) {
+        if(arr[temp[0]]>=arr[i]) {
+            temp[0]=i;
+            parent[i]=-1;
+        } else if(arr[temp[len-1]]<arr[i]) {
+            parent[i]=temp[len-1];
+            temp[len++]=i;
+        } else {
+            int index=ceilIndex(temp,arr,-1,len-1,arr[i]);
+            temp[index]=i;
+            parent[i]=temp[index-1];
+        }
+
+    }
+
+    int i=temp[len-1];
+    while(i!=-1) {
+        cout<<"("<<i<<")"<<arr[i]<<" ";
+        i=parent[i];
+    }
+    cout<<endl;
+    return len;
+}
 void printArray(int a[],int n)
 {
     for(int i=0; i<n; i++)

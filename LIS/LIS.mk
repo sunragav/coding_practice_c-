@@ -5,15 +5,15 @@
 ## Debug
 ProjectName            :=LIS
 ConfigurationName      :=Debug
-WorkspacePath          :=C:/Users/SundaraRaghavan/Documents/DS&Algo
-ProjectPath            :=C:/Users/SundaraRaghavan/Documents/DS&Algo/LIS
+WorkspacePath          :=C:/Users/SundaraRaghavan/work/version-control/coding/coding_practice_c-/coding_practice
+ProjectPath            :=C:/Users/SundaraRaghavan/work/version-control/coding/coding_practice_c-/LIS
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=SundaraRaghavan
-Date                   :=17/10/2016
+Date                   :=20/10/2016
 CodeLitePath           :="C:/Program Files/CodeLite"
 LinkerName             :=C:/TDM-GCC-64/bin/g++.exe
 SharedObjectLinkerName :=C:/TDM-GCC-64/bin/g++.exe -shared -fPIC
@@ -93,7 +93,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/SundaraRaghavan/Documents/DS&Algo/LIS/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/SundaraRaghavan/work/version-control/coding/coding_practice_c-/LIS/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
 
@@ -101,7 +101,7 @@ $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix)main.cpp
 
 $(IntermediateDirectory)/LIS.cpp$(ObjectSuffix): LIS.cpp $(IntermediateDirectory)/LIS.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/SundaraRaghavan/Documents/DS&Algo/LIS/LIS.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/LIS.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/SundaraRaghavan/work/version-control/coding/coding_practice_c-/LIS/LIS.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/LIS.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/LIS.cpp$(DependSuffix): LIS.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/LIS.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/LIS.cpp$(DependSuffix) -MM LIS.cpp
 
