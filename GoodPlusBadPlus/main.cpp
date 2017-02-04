@@ -1,12 +1,30 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <math.h>
 
 using namespace std;
 
 struct Plus {
-    Plus(int i, int j, int p) : x(i), y(j), area(p) {
+    Plus(int i, int j, int p) : y(i), x(j), area(p) {
 
+    }
+
+    int getLen() {
+        return (area - 1) / 4;
+    }
+
+    unsigned long long square(unsigned long long a) {
+        return a * a;
+    }
+
+    bool doesOverlap(Plus p) {
+        int len = getLen();
+        int len2 = p.getLen();
+        int distx = abs(x - p.x);
+        int disty = abs(y - p.y);
+        //return square(distx) + square(disty) < square(len + len2);
+        return (distx<(len+len2)) && (disty<(len+len2));
     }
 
     int x, y;
@@ -66,14 +84,18 @@ public:
             }
             cout << endl;
         }
-        unsigned int size = pluses.size();
-        if (size == 0) return 0;
-        int prod = 1;
-        sort(pluses.begin(), pluses.end(), cmp);
-        if (pluses.size() > 1) {
-            prod = pluses[pluses.size() - 1].area* pluses[pluses.size() - 2].area;
+        int maxprod = 1;
+        for (int i = 0; i < pluses.size() - 1; i++) {
+            for (int j = i + 1; j < pluses.size(); j++) {
+                if (pluses[i].doesOverlap(pluses[j])) {
+                    maxprod = max(maxprod, max(pluses[i].area, pluses[j].area));
+                } else {
+                    maxprod = max(maxprod, pluses[i].area * pluses[j].area);
+                }
+            }
         }
-        return prod;
+
+        return maxprod;
     }
 
 private:
@@ -136,7 +158,7 @@ private:
         int topLen = getTopLen(i, j), botLen = getDownLen(i, j), rightLen = getRightLen(i, j),
                 leftLen = getLeftLen(i, j);
         if (topLen > 0 && botLen > 0 && rightLen > 0 && leftLen > 0) {
-            len = 1+4 * min(topLen, min(botLen, min(rightLen, leftLen)));
+            len = 1 + 4 * min(topLen, min(botLen, min(rightLen, leftLen)));
         } else {
             len = 1;
         }
